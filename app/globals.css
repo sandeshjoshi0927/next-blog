@@ -52,9 +52,9 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #9810fa;
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --secondary: #EA8C55;
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
@@ -119,12 +119,8 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background;
   }
 }
 
-@layer utilities {
-  .btn-primary {
-    @apply bg-purple-600 hover:bg-purple-800;
-  }
-}
+@layer utilities {}
