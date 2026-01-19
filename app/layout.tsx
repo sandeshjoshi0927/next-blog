@@ -9,8 +9,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Store It",
-  description: "StoreIt - The only storage solution you need.",
+  title: "Next Blog",
 };
 
 export default function RootLayout({
