@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { showActive } from "@/lib/utils";
+import { isAuthenticated } from "@/lib/auth";
 
 const Header = () => {
   const path = usePathname();
@@ -27,7 +28,11 @@ const Header = () => {
       </nav>
 
       <Button type="submit" className="btn-primary">
-        <Link href="/sign-in">Sign In</Link>
+        {isAuthenticated() ? (
+          <Link href="/dashboard">Dashboard</Link>
+        ) : (
+          <Link href="/sign-in">Sign In</Link>
+        )}
       </Button>
     </header>
   );

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -23,9 +24,14 @@ const Home = () => {
           </p>
         </div>
 
-        <Button type="submit" className="btn-primary">
-          Write Your First Post
-        </Button>
+        <div className="flex gap-2">
+          <Button type="submit" className="bg-secondary">
+            <Link href="/blog">Explore Out</Link>
+          </Button>
+          <Button type="submit" className="bg-primary">
+            <Link href="/sign-up">Write Your First Post!</Link>
+          </Button>
+        </div>
       </div>
     </main>
   );

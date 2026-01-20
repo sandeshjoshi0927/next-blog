@@ -5,6 +5,8 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import { getCurrentUser, clearAuthData } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { User } from "@/lib/users";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const DashboardPage = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -43,7 +45,7 @@ const DashboardPage = () => {
 
   const handleLogout = () => {
     clearAuthData();
-    router.push("/sign-in");
+    router.push("/");
   };
 
   if (isLoading) {
@@ -67,12 +69,12 @@ const DashboardPage = () => {
                 <h1 className="text-xl font-bold">Dashboard</h1>
               </div>
               <div className="flex items-center">
-                <button
+                <Button
                   onClick={handleLogout}
                   className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
                 >
                   Logout
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -80,22 +82,18 @@ const DashboardPage = () => {
 
         <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           {user && (
-            <div className="rounded-lg bg-white p-6 shadow">
-              <h2 className="mb-6 text-2xl font-bold">
-                Welcome, {user.fullName || user.email}!
-              </h2>
+            <>
+              <Button className="mb-4">
+                <Link href="/">Go Home</Link>
+              </Button>
+              <div className="rounded-lg bg-white p-6 shadow">
+                <h2 className="mb-6 text-2xl font-bold">
+                  Welcome, {user.fullName || user.email}!
+                </h2>
 
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="rounded-lg border border-gray-200 p-4">
-                  <h3 className="mb-2 font-semibold">Your Information</h3>
-                  <p className="text-gray-600">Email: {user.email}</p>
-                  <p className="text-gray-600">User ID: {user.id}</p>
-                  {user.fullName && (
-                    <p className="text-gray-600">Name: {user.fullName}</p>
-                  )}
-                </div>
+                <div className="grid gap-6 md:grid-cols-2"></div>
               </div>
-            </div>
+            </>
           )}
         </main>
       </div>

@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { Separator } from "@radix-ui/react-separator";
 import { showActive } from "@/lib/utils";
+import { isAuthenticated } from "@/lib/auth";
 
 const MobileNavigation = () => {
   const [open, setOpen] = useState(false);
@@ -43,7 +44,11 @@ const MobileNavigation = () => {
           </nav>
 
           <Button type="submit" className="btn-primary">
-            <Link href="/sign-in">Sign In</Link>
+            {isAuthenticated() ? (
+              <Link href="/dashboard">Dashboard</Link>
+            ) : (
+              <Link href="/sign-in">Sign In</Link>
+            )}
           </Button>
         </SheetContent>
       </Sheet>

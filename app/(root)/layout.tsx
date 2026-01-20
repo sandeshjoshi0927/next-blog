@@ -10,7 +10,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <MobileNavigation />
         <div className="h-screen">{children}</div>
       </main>
-      <div className="h-4 bg-primary " />
     </>
   );
 };

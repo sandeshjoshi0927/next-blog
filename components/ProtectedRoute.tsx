@@ -14,7 +14,6 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      // Wait a bit to ensure localStorage is available
       await new Promise((resolve) => setTimeout(resolve, 100));
 
       if (!isAuthenticated()) {
