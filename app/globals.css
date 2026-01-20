@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* @lat @custom-variant dark (&:is(.dark *)); */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -45,11 +43,13 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50 scroll-smooth;
+    border-color: var(--border);
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background;
+    background-color: var(--background);
   }
 
   :root {
@@ -122,28 +122,25 @@
   }
 }
 
-@layer utilities {
-  .body-2 {
-    @apply text-[14px] leading-[20px] font-normal;
-  }
+@utility form-item {
+  display: flex;
+  height: 78px;
+  gap: 6px;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
-  .shad-no-focus {
-    @apply outline-none ring-offset-transparent focus:ring-transparent focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0;
-  }
+@utility form-label {
+  color: var(--light-100);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
 
-  .shad-input {
-    @apply border-none shadow-none p-0 shad-no-focus placeholder:text-light-200 body-2;
-  }
-
-  .shad-form-item {
-    @apply flex h-[78px] flex-col justify-center rounded-xl border border-light-300 px-4 shadow-drop-1;
-  }
-
-  .shad-form-label {
-    @apply text-light-100 py-2 body-2 w-full;
-  }
-
-  .shad-form-message {
-    @apply text-red body-2 ml-4;
-  }
+@utility shad-form-message {
+  color: var(--red);
+  margin-left: 1rem;
 }
